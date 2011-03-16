@@ -25,6 +25,7 @@ RDEPEND="dev-python/pygtk
 		 dev-python/pyalsaaudio
 		 dev-python/feedparser
 		 dev-python/pyinotify
+		 dev-python/libwnck-python
 cairo? ( x11-misc/cairo-clock )
 lg4l-module? ( dev-python/pyinputevent )
 title? ( dev-python/setproctitle )"
