@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gnome15.org/"
 EGIT_REPO_URI="git://github.com/CMoH/lg4l.git"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 # for some reason the build fails with parallel builds
