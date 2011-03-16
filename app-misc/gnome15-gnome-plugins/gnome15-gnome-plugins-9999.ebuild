@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 RDEPEND="app-misc/gnome15-core
+		 dev-python/vobject
 		 dev-python/evolution-python
 		 dev-python/gnome-keyring-python"
 DEPEND="${RDEPEND}"

@@ -12,14 +12,8 @@ SRC_URI="http://www.gnome15.org/downloads/Gnome15/Required/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="cairo"
+IUSE="cairo l4gl-module title"
 
-# optional dependencies
-OPT_DEPEND="dev-python/setproctitle
-		 dev-python/vobject
-		 dev-python/pyalsa
-cairo? ( x11-misc/cairo-clock )
-"
 RDEPEND="dev-python/pygtk
 		 dev-python/dbus-python
 		 dev-python/lxml
@@ -27,9 +21,12 @@ RDEPEND="dev-python/pygtk
 		 dev-python/imaging
 		 dev-python/python-xlib
 		 dev-python/librsvg-python
+		 dev-python/pyalsa
 		 dev-python/pyalsaaudio
 		 dev-python/feedparser
-${OPT_DEPEND}"
+cairo? ( x11-misc/cairo-clock )
+lg4l-module? ( dev-python/pyinputevent )
+title? ( dev-python/setproctitle )"
 DEPEND="${RDEPEND}"
 
 src_configure() {
