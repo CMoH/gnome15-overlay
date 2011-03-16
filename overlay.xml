@@ -6,11 +6,8 @@
       contact = "cheepeero@gmx.net"
       status = "unofficial"
       name = "gnome15">
-
-  <link>http://www.cheepee.homedns.org/~cipi</link>
-
-  <description>Gentoo ebuilds for Gnome15 packages</description>
-</overlay>
-
+    <link>http://github.com/CMoH/gnome15-overlay</link>
+    <description>Gentoo ebuilds for Gnome15 packages</description>
+  </overlay>
 </layman>
 
