@@ -3,16 +3,18 @@ SUPPORT_PYTHON_ABIS="1"
 
 MY_PN="gnome15"
 MY_P="${MY_PN}-${PV}"
+MY_S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Gnome tools for the Logitech G Series Keyboards And Z-10 Speakers"
 HOMEPAGE="http://www.gnome15.org/"
-SRC_URI="http://www.tanktarta.pwp.blueyonder.co.uk/gnome15/${MY_P}.tar.gz"
+SRC_URI="http://www.gnome15.org/downloads/Gnome15/Required/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="cairo"
 
+# optional dependencies
 OPT_DEPEND="dev-python/setproctitle
 		 dev-python/vobject
 		 dev-python/pyalsa
@@ -27,9 +29,16 @@ RDEPEND="dev-python/pygtk
 		 dev-python/librsvg-python
 		 dev-python/pyalsaaudio
 		 dev-python/feedparser
-		 dev-python/python-uinput
 ${OPT_DEPEND}"
 DEPEND="${RDEPEND}"
+
+src_configure() {
+	cd ${MY_S} && econf || die "econf failed"
+}
+
+src_compile() {
+	cd ${MY_S} && emake || die "emake failed"
+}
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
