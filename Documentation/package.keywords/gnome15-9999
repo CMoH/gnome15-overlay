@@ -1,0 +1,10 @@
+app-misc/gnome15-core
+app-misc/gnome15-gnome-plugins
+app-misc/gnome15-iconpack
+app-misc/gnome15-impulse15
+app-misc/gnome15-indicator
+app-misc/gnome15-panel-applet
+app-misc/gnome15-sandbox-plugins
+app-misc/gnome15-systemtray
+sys-kernel/lg4l-kernel-module
+virtual/gnome15
