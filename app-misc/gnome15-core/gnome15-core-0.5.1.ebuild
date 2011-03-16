@@ -44,11 +44,11 @@ src_install() {
 	cd ${MY_S} && emake DESTDIR="${D}" install || die "emake install failed"
 }
 
-pkg_postinst() {
-	python_mod_optimize ${MY_PN}
-}
+# pkg_postinst() {
+# 	python_mod_optimize ${MY_PN}
+# }
 
-pkg_postrm() {
-	python_mod_cleanup ${MY_PN}
-}
+# pkg_postrm() {
+# 	python_mod_cleanup ${MY_PN}
+# }
 
