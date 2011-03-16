@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-RDEPEND="=app-misc/gnome15-core-9999
+RDEPEND="app-misc/gnome15-core
 		 sci-libs/fftw:3.0
 		 media-sound/pulseaudio"
 DEPEND="${RDEPEND}"
