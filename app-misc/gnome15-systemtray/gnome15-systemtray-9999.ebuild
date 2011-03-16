@@ -12,9 +12,12 @@ EBZR_REPO_URI="/home/cipi/src/g19/gnome15"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
+IUSE="title"
 
-RDEPEND="=app-misc/gnome15-core-${PV}"
+RDEPEND="app-misc/gnome15-core
+		 dev-python/dbus-python
+		 dev-python/pygobject
+title? ( dev-python/setproctitle )"
 DEPEND="${RDEPEND}"
 
 
