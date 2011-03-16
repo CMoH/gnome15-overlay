@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<layman>
+  <overlay
+      type = "git"
+      src  = "git://github.com/CMoH/gnome15-overlay.git"
+      contact = "cheepeero@gmx.net"
+      status = "unofficial"
+      name = "gnome15">
+
+  <link>http://www.cheepee.homedns.org/~cipi</link>
+
+  <description>Gentoo ebuilds for Gnome15 packages</description>
+</overlay>
+
+</layman>
+
