@@ -10,7 +10,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-RDEPEND="=app-misc/gnome15-core-0.5.1
+RDEPEND="app-misc/gnome15-core
 		 dev-python/pylibg19
 		 dev-python/pyusb
 		 dev-python/imaging
