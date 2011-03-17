@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="cairo lg4l-module title"
 
 RDEPEND="dev-python/pygtk
+		 dev-python/gconf-python
 		 dev-python/dbus-python
 		 dev-python/lxml
 		 dev-python/pycairo
