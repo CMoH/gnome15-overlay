@@ -27,7 +27,8 @@ RDEPEND="dev-python/pygtk
 		 dev-python/pyinotify
 		 dev-python/libwnck-python
 cairo? ( x11-misc/cairo-clock )
-lg4l-module? ( dev-python/pyinputevent )
+lg4l-module? ( dev-python/pyinputevent
+			   app-misc/lgsetled )
 title? ( dev-python/setproctitle )"
 DEPEND="${RDEPEND}"
 
