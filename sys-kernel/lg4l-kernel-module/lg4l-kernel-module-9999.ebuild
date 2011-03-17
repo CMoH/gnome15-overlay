@@ -50,5 +50,6 @@ pkg_setup() {
 	linux-mod_pkg_setup
 
 	BUILD_PARAMS="-C ${KV_DIR} M=${S}"
-	BUILD_TARGETS="hid-g13.ko hid-g15.ko hid-g19.ko hid-g110.ko hid-gfb.ko"
+	BUILD_TARGETS=" " # let the default target build the modules
+#	BUILD_TARGETS="hid-g13.ko hid-g15.ko hid-g19.ko hid-g110.ko hid-gfb.ko"
 }
