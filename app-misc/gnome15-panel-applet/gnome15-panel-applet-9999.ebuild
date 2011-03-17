@@ -14,8 +14,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
+# TODO: remove gnome-base/libgnomeui when gentoo fixes deps
 RDEPEND="=app-misc/gnome15-core-${PV}
-		 dev-python/gnome-applets-python
+		 gnome-base/libgnomeui
 		 dev-python/gnome-desktop-python
 		 dev-python/dbus-python
 		 dev-python/pygobject"
@@ -29,10 +30,11 @@ src_prepare() {
 }
 
 src_configure() {
-	einfo "Gnome python dependencies have a minor quirk which may cause this build to fail"
-	einfo "Please make sure gnome-desktop-python is installed before gnome-applets-python"
-	einfo "If you get a configure eror about gnomeapplet, re-emerge gnome-applets-python"
-	einfo "after gnome-desktop-python is already emerged"
+	einfo "Gnome python dependencies have a minor quirk which may cause this ebuild to fail"
+	einfo "Please make sure libgnomeui gets installed before gnome-applets-python"
+	einfo "If you get a configure eror about a missing gnomeapplet,"
+	einfo "run ``emerge -C gnome-applets-python ; emerge -1 libgnomeui gnome-applets-python''"
+	einfo "and next retry the original emerge command"
 
 	cd ${MY_SUBPACKAGE} && econf || die "econf failed"
 }
