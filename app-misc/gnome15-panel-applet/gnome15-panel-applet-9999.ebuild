@@ -17,6 +17,7 @@ IUSE=""
 # TODO: remove gnome-base/libgnomeui when gentoo fixes deps
 RDEPEND="=app-misc/gnome15-core-${PV}
 		 gnome-base/libgnomeui
+		 dev-python/gnome-desktop-python
 		 dev-python/gnome-applets-python
 		 dev-python/dbus-python
 		 dev-python/pygobject"
