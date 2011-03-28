@@ -43,6 +43,9 @@ src_compile() {
 
 src_install() {
 	cd ${MY_S} && emake DESTDIR="${D}" install || die "emake install failed"
+
+	insinto /etc/udev/rules.d
+	doins ${MY_S}/src/udev/99-gnome15-kernel.rules
 }
 
 # pkg_postinst() {
