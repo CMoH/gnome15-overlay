@@ -17,6 +17,7 @@ IUSE="cairo lg4l-module title"
 RDEPEND="dev-python/pygtk
 		 dev-python/gconf-python
 		 dev-python/dbus-python
+		 dev-python/libgtop-python
 		 dev-python/lxml
 		 dev-python/pycairo
 		 dev-python/imaging
