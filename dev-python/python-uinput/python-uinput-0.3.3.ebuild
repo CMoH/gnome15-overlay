@@ -14,3 +14,5 @@ IUSE=""
 
 RDEPEND="dev-libs/libsuinput"
 DEPEND="${RDEPEND}"
+
+RESTRICT_PYTHON_ABIS="3.*"
