@@ -1,17 +1,17 @@
 EAPI="3"
 SUPPORT_PYTHON_ABIS="1"
 
-inherit autotools bzr # python
+MY_PN="gnome15"
+MY_P="${MY_PN}-${PV}"
+MY_S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Gnome tools for the Logitech G Series Keyboards And Z-10 Speakers"
 HOMEPAGE="http://www.gnome15.org/"
-
-#EBZR_REPO_URI="lp:gnome15"
-EBZR_REPO_URI="/home/cipi/src/g19/gnome15"
+SRC_URI="http://www.gnome15.org/downloads/Gnome15/Required/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="cairo lg4l-module title"
 
 RDEPEND="dev-python/pygtk
@@ -31,34 +31,30 @@ RDEPEND="dev-python/pygtk
 		 dev-python/libwnck-python
 cairo? ( x11-misc/cairo-clock )
 lg4l-module? ( dev-python/pyinputevent
-			   app-misc/lgsetled  )
+			   app-misc/lgsetled )
 title? ( dev-python/setproctitle )"
 DEPEND="${RDEPEND}"
 
-
-MY_SUBPACKAGE="gnome15"
-
-src_prepare() {
-	cd ${MY_SUBPACKAGE} && eautoreconf || die "eautoreconf failed"
+src_configure() {
+	cd ${MY_S} && econf || die "econf failed"
 }
 
-src_configure() {
-	cd ${MY_SUBPACKAGE} && econf || die "econf failed"
+src_compile() {
+	cd ${MY_S} && emake || die "emake failed"
 }
 
 src_install() {
-	cd ${MY_SUBPACKAGE} && emake DESTDIR="${D}" install || die "emake install failed"
+	cd ${MY_S} && emake DESTDIR="${D}" install || die "emake install failed"
 
 	insinto /etc/udev/rules.d
-	doins ${MY_SUBPACKAGE}/src/udev/99-gnome15-kernel.rules
+	doins ${MY_S}/src/udev/99-gnome15-kernel.rules
 }
 
 # pkg_postinst() {
-# 	python_mod_optimize ${PN}
+# 	python_mod_optimize ${MY_PN}
 # }
 
 # pkg_postrm() {
-# 	python_mod_cleanup ${PN}
+# 	python_mod_cleanup ${MY_PN}
 # }
-
 
