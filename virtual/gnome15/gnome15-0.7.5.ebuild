@@ -11,11 +11,11 @@ IUSE="ayatana g15d g19d gnome lg4l-module pulseaudio systray themes"
 
 DEPEND=""
 RDEPEND="      =app-misc/gnome15-core-0.7.5
-ayatana?     ( =app-misc/gnome15-indicator-0.0.1 )
+			   =app-misc/gnome15-plugins-0.7.5
+ayatana?     ( =app-misc/gnome15-indicator-0.0.2 )
 g19d?        ( =app-misc/g19d-0.0.10 )
-gnome?       ( =app-misc/gnome15-gnome-plugins-0.0.2
-			   =app-misc/gnome15-panel-applet-0.0.1 )
-lg4l-module? ( =sys-kernel/lg4l-kernel-module-20110316 )
-pulseaudio?  ( =app-misc/gnome15-impulse15-0.0.5 )
-systray?     ( =app-misc/gnome15-systemtray-0.0.1 )
-themes?      ( =app-misc/gnome15-iconpack-0.0.2 )"
+gnome?       ( =app-misc/gnome15-panel-applet-0.0.2 )
+lg4l-module? ( =sys-kernel/lg4l-kernel-module-20110919 )
+pulseaudio?  ( =app-misc/gnome15-impulse15-0.0.10 )
+systray?     ( =app-misc/gnome15-systemtray-0.0.2 )
+themes?      ( =app-misc/gnome15-iconpack-0.0.3 )"
