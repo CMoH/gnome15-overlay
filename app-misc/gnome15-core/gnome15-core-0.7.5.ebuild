@@ -43,6 +43,8 @@ gnome? ( gnome-base/libgnomeui
 		 dev-python/gnome-applets-python
 		 dev-python/dbus-python
 		 dev-python/pygobject )
+systray? ( dev-python/dbus-python
+		 dev-python/pygobject )
 lg4l-module? ( dev-python/pyinputevent
 			   app-misc/lgsetled )
 title? ( dev-python/setproctitle )"
