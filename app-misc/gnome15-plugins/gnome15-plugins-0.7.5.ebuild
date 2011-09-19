@@ -13,7 +13,8 @@ IUSE=""
 RDEPEND="app-misc/gnome15-core
 		 dev-python/vobject
 		 dev-python/evolution-python
-		 dev-python/gnome-keyring-python"
+		 dev-python/gnome-keyring-python
+		!app-misc/gnome15-gnome-plugins"
 DEPEND="${RDEPEND}"
 
 

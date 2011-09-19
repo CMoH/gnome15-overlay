@@ -12,7 +12,7 @@ SRC_URI="http://www.gnome15.org/downloads/Gnome15/Required/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="cairo lg4l-module title"
+IUSE="ayatana cairo gnome lg4l-module systray title"
 
 # seems these were moved from g19d here:
 #		 dev-python/pyusb
@@ -34,7 +34,15 @@ RDEPEND="dev-python/pygtk
 		 dev-python/pyusb
 		 dev-python/python-uinput
 		 sys-fs/udev
+		!app-misc/gnome15-indicator
+		!app-misc/gnome15-panel-applet
+		!app-misc/gnome15-systemtray
 cairo? ( x11-misc/cairo-clock )
+gnome? ( gnome-base/libgnomeui
+		 dev-python/gnome-desktop-python
+		 dev-python/gnome-applets-python
+		 dev-python/dbus-python
+		 dev-python/pygobject )
 lg4l-module? ( dev-python/pyinputevent
 			   app-misc/lgsetled )
 title? ( dev-python/setproctitle )"
@@ -42,6 +50,9 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	cd ${MY_S} && econf \
+		$(use_enable ayatana indicator) \
+		$(use_enable gnome applet) \
+		$(use_enable systray systemtray) \
 		--enable-udev=/etc/udev/rules.d \
 		|| die "econf failed"
 }
@@ -53,8 +64,8 @@ src_compile() {
 src_install() {
 	cd ${MY_S} && emake DESTDIR="${D}" install || die "emake install failed"
 
-	insinto /etc/udev/rules.d
-	doins ${MY_S}/src/udev/99-gnome15-kernel.rules
+	# insinto /etc/udev/rules.d
+	# doins ${MY_S}/src/udev/99-gnome15-kernel.rules
 }
 
 # pkg_postinst() {
