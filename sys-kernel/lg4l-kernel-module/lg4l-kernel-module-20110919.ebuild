@@ -19,7 +19,7 @@ IUSE=""
 MAKEOPTS=""
 #RESTRICT="mirror"
 
-DEPEND=">=virtual/linux-sources-2.6.37"
+DEPEND="virtual/linux-sources"
 RDEPEND=""
 
 S="${WORKDIR}"
@@ -28,6 +28,14 @@ MODULE_NAMES="hid-g13(extra) hid-g15(extra) hid-g19(extra) hid-g110(extra) hid-g
 #MODULESD_WL_ALIASES=("wlan0 wl")
 
 pkg_setup() {
+	if kernel_is lt 2 6 37; then
+		echo
+		ewarn "Your kernel version is ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
+		ewarn "This module works with a kernel version >= 2.6.37"
+		echo
+		ewarn "DO NOT file bug reports for kernel versions less than 2.6.7 as they will be ignored."
+	fi
+
 	# framebuffer
 	CONFIG_CHECK="FB FB_DEFERRED_IO"
 	CONFIG_CHECK="${CONFIG_CHECK} FB_SYS_FILLRECT FB_SYS_COPYAREA FB_SYS_IMAGEBLIT"

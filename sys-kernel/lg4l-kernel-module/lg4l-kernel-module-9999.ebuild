@@ -18,7 +18,7 @@ IUSE=""
 MAKEOPTS=""
 #RESTRICT="mirror"
 
-DEPEND=">=virtual/linux-sources-2.6.32"
+DEPEND="virtual/linux-sources"
 RDEPEND=""
 
 S="${WORKDIR}"
