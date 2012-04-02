@@ -13,6 +13,6 @@ DEPEND=""
 RDEPEND="      =app-misc/gnome15-core-0.7.5-r1
 			   =app-misc/gnome15-plugins-0.7.5
 g19d?        ( =app-misc/g19d-0.0.10 )
-lg4l-module? ( =sys-kernel/lg4l-kernel-module-20120331 )
+lg4l-module? ( =sys-kernel/lg4l-kernel-module-20120331-r1 )
 pulseaudio?  ( =app-misc/gnome15-impulse15-0.0.10 )
 themes?      ( =app-misc/gnome15-iconpack-0.0.3 )"
