@@ -24,7 +24,7 @@ RDEPEND=""
 
 S="${WORKDIR}"
 
-MODULE_NAMES="hid-g13(extra) hid-g15(extra) hid-g19(extra) hid-g110(extra) hid-gfb(extra)"
+MODULE_NAMES="hid-g13(extra) hid-g15(extra) hid-g19(extra) hid-g110(extra) hid-gfb(extra) hid-ginput(extra)"
 #MODULESD_WL_ALIASES=("wlan0 wl")
 
 pkg_setup() {
