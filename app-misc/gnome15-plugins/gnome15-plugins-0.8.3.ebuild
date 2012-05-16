@@ -10,6 +10,7 @@ KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="evo lm_sensors telepathy v4l"
 
 RDEPEND="app-misc/gnome15-core
+         dev-python/gst-python
 		 dev-python/vobject
 		 dev-python/gnome-keyring-python
 		!app-misc/gnome15-gnome-plugins
