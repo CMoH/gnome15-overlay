@@ -1,5 +1,6 @@
 EAPI="3"
-SUPPORT_PYTHON_ABIS="1"
+
+inherit linux-info
 
 MY_PN="gnome15"
 MY_P="${MY_PN}-${PV}"
@@ -12,11 +13,16 @@ SRC_URI="http://www.gnome15.org/downloads/Gnome15/Required/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="cairo lg4l-module title"
+IUSE="ayatana cairo g15 g19 gnome lg4l-module systray title"
+
+# seems these were moved from g19d here:
+#		 dev-python/pyusb
+#		 dev-python/python-uinput
 
 RDEPEND="dev-python/pygtk
 		 dev-python/gconf-python
 		 dev-python/dbus-python
+		 dev-python/libgtop-python
 		 dev-python/lxml
 		 dev-python/pycairo
 		 dev-python/imaging
@@ -27,14 +33,40 @@ RDEPEND="dev-python/pygtk
 		 dev-python/feedparser
 		 dev-python/pyinotify
 		 dev-python/libwnck-python
+		 dev-python/pyusb
+		 dev-python/pyxdg
+		 dev-python/python-uinput
+		 dev-python/python-virtkey
+		 sys-fs/udev
+		!app-misc/gnome15-indicator
+		!app-misc/gnome15-panel-applet
+		!app-misc/gnome15-systemtray
 cairo? ( x11-misc/cairo-clock )
+g15?   ( dev-libs/libg15-gnome15 )
+g19?   ( dev-python/pylibg19 )
+gnome? ( gnome-base/libgnomeui
+		 dev-python/gnome-desktop-python
+		 dev-python/gnome-applets-python
+		 dev-python/pygobject )
+systray? ( dev-python/pygobject )
 lg4l-module? ( dev-python/pyinputevent
 			   app-misc/lgsetled )
 title? ( dev-python/setproctitle )"
 DEPEND="${RDEPEND}"
 
+pkg_setup() {
+	ERROR_INPUT_UINPUT="INPUT_UINPUT is required for g15-desktop-service to work"
+	CONFIG_CHECK="~INPUT_UINPUT"
+	check_extra_config
+}
+
 src_configure() {
-	cd ${MY_S} && econf || die "econf failed"
+	cd ${MY_S} && econf \
+		$(use_enable ayatana indicator) \
+		$(use_enable gnome applet) \
+		$(use_enable systray systemtray) \
+		--enable-udev=/etc/udev/rules.d \
+		|| die "econf failed"
 }
 
 src_compile() {
@@ -43,16 +75,5 @@ src_compile() {
 
 src_install() {
 	cd ${MY_S} && emake DESTDIR="${D}" install || die "emake install failed"
-
-	insinto /etc/udev/rules.d
-	doins ${MY_S}/src/udev/99-gnome15-kernel.rules
 }
-
-# pkg_postinst() {
-# 	python_mod_optimize ${MY_PN}
-# }
-
-# pkg_postrm() {
-# 	python_mod_cleanup ${MY_PN}
-# }
 
