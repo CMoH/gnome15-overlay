@@ -1,5 +1,7 @@
 EAPI="3"
 
+inherit linux-info
+
 MY_PN="gnome15"
 MY_P="${MY_PN}-${PV}"
 MY_S="${WORKDIR}/${MY_P}"
@@ -36,23 +38,26 @@ RDEPEND="dev-python/pygtk
 		 dev-python/python-uinput
 		 dev-python/python-virtkey
 		 sys-fs/udev
-		!app-misc/gnome15-indicator
-		!app-misc/gnome15-panel-applet
-		!app-misc/gnome15-systemtray
-cairo? ( x11-misc/cairo-clock )
+cairo? ( x11-misc/cairo-clock
+		 dev-python/Cairoplot )
 g15?   ( dev-libs/libg15-gnome15 )
 g19?   ( dev-python/pylibg19 )
 gnome? ( gnome-base/libgnomeui
 		 dev-python/gnome-desktop-python
 		 dev-python/gnome-applets-python
-		 dev-python/dbus-python
 		 dev-python/pygobject )
-systray? ( dev-python/dbus-python
-		   dev-python/pygobject )
-lg4l-module? ( dev-python/pyinputevent
-			   app-misc/lgsetled )
+systray? ( dev-python/pygobject )
+lg4l-module? (
+		 dev-python/pyinputevent
+		 sys-kernel/lg4l-kernel-module )
 title? ( dev-python/setproctitle )"
 DEPEND="${RDEPEND}"
+
+pkg_setup() {
+	ERROR_INPUT_UINPUT="INPUT_UINPUT is required for g15-desktop-service to work"
+	CONFIG_CHECK="~INPUT_UINPUT"
+	check_extra_config
+}
 
 src_configure() {
 	cd ${MY_S} && econf \
@@ -69,8 +74,4 @@ src_compile() {
 
 src_install() {
 	cd ${MY_S} && emake DESTDIR="${D}" install || die "emake install failed"
-
-	# insinto /etc/udev/rules.d
-	# doins ${MY_S}/src/udev/99-gnome15-kernel.rules
 }
-

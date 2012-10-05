@@ -1,5 +1,4 @@
 EAPI="3"
-SUPPORT_PYTHON_ABIS="1"
 
 DESCRIPTION="Provides a collection of GNOME specific plugins for Gnome15."
 HOMEPAGE="http://www.gnome15.org/"
@@ -8,25 +7,18 @@ SRC_URI="http://www.gnome15.org/downloads/Gnome15/Optional/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
+IUSE="evo lm_sensors telepathy v4l"
 
 RDEPEND="app-misc/gnome15-core
+		 dev-python/gst-python
 		 dev-python/vobject
-		 dev-python/evolution-python
-		 dev-python/gnome-keyring-python"
-DEPEND="${RDEPEND}"
+		 dev-python/gnome-keyring-python
+evo?   ( dev-python/evolution-python )
+lm_sensors? ( dev-python/PySensors )
+telepathy? ( dev-python/telepathy-python )"
 
+DEPEND="${RDEPEND}"
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
 }
-
-# pkg_postinst() {
-# 	python_mod_optimize ${PN}
-# }
-
-# pkg_postrm() {
-# 	python_mod_cleanup ${PN}
-# }
-
-
