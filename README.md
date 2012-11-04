@@ -47,7 +47,7 @@ Here are the use-flags and their relevance for virtual/gnome15:
 * g15d - installs gnome15-sandbox-plugins and g15daemon
 * g19d - installs g19d
 * gnome - installs gnome15-gnome-plugins and gnome15-panel-applet
-* lg4l-module - installs the kernel module (see kernel notes)
+* lg4l-module - installs the kernel module (see below)
 * pulseaudio - installs gnome15-impulse15
 * systray - installs gnome15-systemtray
 * themes - installs gnome15-iconpack
@@ -55,7 +55,17 @@ Here are the use-flags and their relevance for virtual/gnome15:
 Notes: the ayatana use flag is masked by gentoo. Also, there are no packages for the indicator framework, so currently this flag is not properly implemented in my ebuilds either.
 
 
-Using the -9999 ebuilds
+Notes on the kernel module
+==========================
+
+I am unsure if the necessary modules are auto-loaded by the kernel, so for safety you should add the appropriate `hid-gXX` module to your `/etc/conf.d/modules` as instructed by the Gentoo Handbook.
+
+By default, the kernel has a catch-all hid driver, named generic-usb in kernels before 3.5.0, and lately it seems to be called hid-generic. The `rebind` script from the lg4l-kernel-module ebuild unbinds the default driver and binds the appropriate driver.
+
+The latest version automatically installs the `rebind` script into `/etc/local.d/`. Make sure you have the `local` initscript enabled in your preferred soft runlevel(s).
+
+
+The -9999 ebuilds
 =======================
 
 The ebuilds are for development use and currently they point to my branch of the gnome15 project. Within them you will find the URL towards the official Gnome15 bazaar branch - feel free to replace the URI and use them with the official branch or your own.
@@ -69,11 +79,3 @@ To enable these on stable systems, add gnome15-9999 to package.keywords:
     ln -s /var/lib/layman/gnome15/Documentation/package.keywords/gnome15-9999 .
 
 
-Kernel notes
-============
-
-The kernel modules also needs a patch applied to the kernel, so simply installing the module from here won't be enough. To put it short, the kernel module ebuild here is work-in-progress.
-
-To put it long, hid-core has a catch-all hid driver, named generic-usb. Unfortunately the developers of hid-core decided to place the catch-all driver at the front of the list, so in order to have specific drivers take priority they developed a clumsy blacklist mechanism. However, this blacklist is statically compiled in the kernel sources and cannot be altered when loading a module.
-
-As a result, we also need to patch the kernel sources for the specific drivers to be visible, including the ones in lg4l kernel modules.
