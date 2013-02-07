@@ -1,7 +1,9 @@
-EAPI="3"
+EAPI="5"
+
+PYTHON_COMPAT=( python{2_6,2_7} )
 PYTHON_MODULE="sensors"
 
-inherit distutils
+inherit distutils-r1
 
 DESCRIPTION="Python bindings for libsensors.so from the lm-sensors project"
 HOMEPAGE="http://www.gnome15.org/"
@@ -14,7 +16,3 @@ IUSE=""
 
 RDEPEND="sys-apps/lm_sensors"
 DEPEND="${RDEPEND}"
-
-pkg_setup() {
-	python_enable_pyc
-}
