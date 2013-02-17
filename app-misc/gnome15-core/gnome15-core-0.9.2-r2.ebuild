@@ -32,7 +32,7 @@ RDEPEND="dev-python/pygtk
 		 dev-python/pyxdg
 		 dev-python/python-uinput
 		 dev-python/python-virtkey
-		 sys-fs/udev
+		 virtual/udev
 		 dev-python/keyring
 		 x11-themes/gnome-icon-theme
 cairo? ( x11-misc/cairo-clock
