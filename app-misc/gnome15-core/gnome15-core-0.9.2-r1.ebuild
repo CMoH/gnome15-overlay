@@ -63,7 +63,9 @@ pkg_setup() {
 }
 
 src_configure() {
-	econf \
+	mkdir -p "${T}/home" || die "mkdir failed"
+	HOME="${T}/home" \
+		econf \
 		$(use_enable ayatana indicator) \
 		$(use_enable gnome applet) \
 		$(use_enable systray systemtray) \
