@@ -2,3 +2,4 @@ dev-libs/libindicate
 dev-python/setproctitle
 dev-python/pyusb
 dev-python/keyring
+x11-misc/cairo-clock
