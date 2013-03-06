@@ -1,6 +1,6 @@
 EAPI="3"
 
-inherit linux-info python
+inherit eutils linux-info python
 
 MY_PN="gnome15"
 MY_P="${MY_PN}-${PV}"
@@ -46,7 +46,7 @@ gnome? ( gnome-base/libgnomeui
 systray? ( dev-python/pygobject )
 lg4l-module? (
 		 dev-python/pyinputevent
-		 <sys-kernel/lg4l-kernel-module-20130307 )
+		 >=sys-kernel/lg4l-kernel-module-20130307 )
 title? ( dev-python/setproctitle )"
 DEPEND="${RDEPEND}"
 PYTHON_DEPEND="2:2.6"
@@ -60,6 +60,10 @@ pkg_setup() {
 
 	python_set_active_version 2
 	python_pkg_setup
+}
+
+src_prepare() {
+	epatch "${FILESDIR}/${PV}-match-kernel-module-5d772ca3.patch"
 }
 
 src_configure() {

@@ -1,0 +1,26 @@
+=== modified file 'gnome15/src/main/python/gnome15/drivers/driver_kernel.py'
+--- gnome15/src/main/python/gnome15/drivers/driver_kernel.py	2012-11-24 10:27:36 +0000
++++ gnome15/src/main/python/gnome15/drivers/driver_kernel.py	2013-03-06 23:20:06 +0000
+@@ -990,18 +990,11 @@
+                     b = b << 1
+                     if b == 256:
+                         # Full byte
+-                        b = 1          
+                         i = row * fixed.line_length + col / 8
+-                        
+-                        if row > 7 and col < 96:
+-                            '''
+-                            ????? This was discovered more by trial and error rather than any 
+-                            understanding of what is going on
+-                            '''
+-                            i -= 12 + ( 7 * fixed.line_length )
+-                            
+-                        arrbuf[i] = v   
+-                        v = 0 
++                        arrbuf[i] = v
++                        v = 0
++                        b = 1
++
+             buf = arrbuf.tostring()
+                 
+         if self.fb and self.fb.buffer:
