@@ -3,3 +3,5 @@ dev-python/setproctitle
 dev-python/pyusb
 dev-python/keyring
 x11-misc/cairo-clock
+dev-python/pytest-runner
+dev-python/hgtools
