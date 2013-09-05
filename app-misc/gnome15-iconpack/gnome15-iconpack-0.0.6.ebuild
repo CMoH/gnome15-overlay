@@ -10,7 +10,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="app-misc/gnome15-core"
+RDEPEND=""
 DEPEND="${RDEPEND}"
 
 src_install() {
