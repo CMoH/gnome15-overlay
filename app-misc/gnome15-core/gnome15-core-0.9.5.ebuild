@@ -7,12 +7,14 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Gnome tools for the Logitech G Series Keyboards And Z-10 Speakers"
 HOMEPAGE="http://www.russo79.com/gnome15"
-SRC_URI="https://projects.russo79.com/attachments/download/140/${MY_P}.tar.gz"
+SRC_URI="https://projects.russo79.com/attachments/download/129/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="-*"
-IUSE="ayatana cairo g15 g19 gnome lg4l-module networkmanager systray themes title webkit"
+KEYWORDS="amd64 x86"
+IUSE="ayatana cairo g15 g19 gnome lg4l-module systray themes title webkit"
+
+IUSE_GNOME15_PLUGINS=""
 
 RDEPEND="dev-python/pygtk
 		 dev-python/gconf-python
@@ -66,10 +68,9 @@ src_configure() {
 	GST_REGISTRY="${T}/gstreamer-registry" \
 		econf \
 		$(use_enable ayatana indicator) \
-		$(use_enable gnome gnome-shell-extension) \
-		$(use_enable networkmanager plugin-nm) \
+		$(use_enable gnome applet) \
 		$(use_enable systray systemtray) \
-		$(use_enable webkit plugin-webkit-browser) \
+		--enable-udev=/etc/udev/rules.d \
 		|| die "econf failed"
 }
 

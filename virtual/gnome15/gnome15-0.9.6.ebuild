@@ -6,7 +6,7 @@ SRC_URI=""
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="-*"
 IUSE="cairo lg4l-module lm_sensors pulseaudio"
 
 DEPEND=""
