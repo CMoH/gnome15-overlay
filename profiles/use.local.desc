@@ -1,0 +1,12 @@
+app-misc/gnome15/gnome15:g15 - install G15 userspace driver and plugins (similar to g15daemon)
+app-misc/gnome15/gnome15:g19 - install G19 userspace driver (g19direct)
+app-misc/gnome15/gnome15:g930 - install G930 userspace driver
+app-misc/gnome15/gnome15:google - install plugins for various google services
+app-misc/gnome15/gnome15:lg4l-module - install gnome15 driver for lg4l kernel module
+app-misc/gnome15/gnome15:pop - pop3 mail notifier
+app-misc/gnome15/gnome15:nexuiz - install nexuiz plugin
+app-misc/gnome15/gnome15:screensaver - install screensaver plugin
+app-misc/gnome15/gnome15:systray - systemtray icon
+app-misc/gnome15/gnome15:telepathy - IM plugins via telepathy
+app-misc/gnome15/gnome15:themes - install extra-themes
+app-misc/gnome15/gnome15:title - use setproctitle for frendlier Gnome15 process names
