@@ -1,7 +1,7 @@
 EAPI=2
 
 DESCRIPTION="Virtual for gnome15"
-HOMEPAGE="http://www.gnome15.org/"
+HOMEPAGE=""
 SRC_URI=""
 
 LICENSE=""

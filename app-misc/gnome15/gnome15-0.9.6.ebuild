@@ -160,15 +160,15 @@ src_configure() {
 	fi
 
 #### not sure how to expose these plugins:
-  # --enable-plugin-lens    Enable Unity Lens plugin.
-  # --enable-plugin-notify-lcd
-  #                         Enable Notify LCD plugin. Takes over as notification
-  #                         daemon and displays messages on LCD, blinks keyboard
-  # --enable-plugin-notify-lcd2
-  #                         Enable Notify LCD plugin. Takes over as notification
-  #                         daemon and displays messages on LCD, blinks keyboard
-  # --enable-plugin-ppastats
-  #                         Enable PPAStats plugin.
+# --enable-plugin-lens    Enable Unity Lens plugin.
+# --enable-plugin-notify-lcd
+#                         Enable Notify LCD plugin. Takes over as notification
+#                         daemon and displays messages on LCD, blinks keyboard
+# --enable-plugin-notify-lcd2
+#                         Enable Notify LCD plugin. Takes over as notification
+#                         daemon and displays messages on LCD, blinks keyboard
+# --enable-plugin-ppastats
+#                         Enable PPAStats plugin.
 ###########################################
 
 	THEMES="\
