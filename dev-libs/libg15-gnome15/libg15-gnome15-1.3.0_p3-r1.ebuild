@@ -12,19 +12,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-RDEPEND="dev-libs/libusb"
+RDEPEND="virtual/libusb"
 DEPEND="${RDEPEND}"
 
 S="libg15-${MY_PV}"
-
-# src_configure() {
-# 	cd ${MY_S} && econf || die "econf failed"
-# }
-
-# src_compile() {
-# 	cd ${MY_S} && emake || die "emake failed"
-# }
-
-# src_install() {
-# 	cd ${MY_S} && emake DESTDIR="${D}" install || die "emake install failed"
-# }
