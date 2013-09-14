@@ -1,7 +1,9 @@
-EAPI="3"
+EAPI=5
+
+PYTHON_COMPAT=( python{2_6,2_7} )
 PYTHON_MODULE="cairoplot"
 
-inherit distutils
+inherit distutils-r1
 
 DESCRIPTION="Python module to plot graphics in an easy and intuitive way"
 HOMEPAGE="http://www.russo79.com/gnome15"
@@ -15,8 +17,3 @@ IUSE=""
 RDEPEND="dev-python/pycairo
 		!dev-python/Cairoplot"
 DEPEND="${RDEPEND}"
-
-pkg_setup() {
-	python_set_active_version 2
-	python_enable_pyc
-}

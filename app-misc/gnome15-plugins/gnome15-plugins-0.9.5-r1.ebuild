@@ -1,10 +1,12 @@
-EAPI="3"
+EAPI=5
 
-inherit python
+PYTHON_COMPAT=( python{2_6,2_7} )
+
+inherit python-r1
 
 DESCRIPTION="Provides a collection of GNOME specific plugins for Gnome15."
-HOMEPAGE="http://www.gnome15.org/"
-SRC_URI="http://www.gnome15.org/downloads/Gnome15/Optional/${P}.tar.gz"
+HOMEPAGE="http://www.russo79.com/gnome15"
+SRC_URI="https://projects.russo79.com/attachments/download/130/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -19,14 +21,7 @@ evo? ( dev-python/evolution-python )
 google? ( dev-python/gdata )
 lm_sensors? ( dev-python/PySensors )
 telepathy? ( dev-python/telepathy-python )"
-
 DEPEND="${RDEPEND}"
-PYTHON_DEPEND="2:2.6"
-
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
-}
 
 src_configure() {
 	# some files get written in the $HOME directory
@@ -36,9 +31,5 @@ src_configure() {
 	# C: /usr/bin/python2.7 -c import gst
 
 	GST_REGISTRY="${T}/gstreamer-0.10-registry.dat" \
-		econf || die "econf failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+		econf
 }

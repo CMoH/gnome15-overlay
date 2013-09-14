@@ -1,6 +1,8 @@
-EAPI="3"
+EAPI=5
 
-inherit python
+PYTHON_COMPAT=( python{2_6,2_7} )
+
+inherit python-r1
 
 DESCRIPTION="Based on Impulse screenlet, provides a specturm analyser plugin for Gnome15"
 HOMEPAGE="http://www.gnome15.org/"
@@ -15,13 +17,3 @@ RDEPEND="app-misc/gnome15-core
 		 sci-libs/fftw:3.0
 		 media-sound/pulseaudio"
 DEPEND="${RDEPEND}"
-PYTHON_DEPEND="2:2.6"
-
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-}

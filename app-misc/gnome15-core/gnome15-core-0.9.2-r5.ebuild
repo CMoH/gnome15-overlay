@@ -1,6 +1,8 @@
-EAPI="3"
+EAPI=5
 
-inherit eutils linux-info python
+PYTHON_COMPAT=( python{2_6,2_7} )
+
+inherit eutils linux-info python-r1
 
 MY_PN="gnome15"
 MY_P="${MY_PN}-${PV}"
@@ -49,7 +51,6 @@ lg4l-module? (
 		 >=sys-kernel/lg4l-kernel-module-20130307 )
 title? ( dev-python/setproctitle )"
 DEPEND="${RDEPEND}"
-PYTHON_DEPEND="2:2.6"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -73,14 +74,5 @@ src_configure() {
 		$(use_enable ayatana indicator) \
 		$(use_enable gnome applet) \
 		$(use_enable systray systemtray) \
-		--enable-udev=/etc/udev/rules.d \
-		|| die "econf failed"
-}
-
-src_compile() {
-	emake || die "emake failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+		--enable-udev=/etc/udev/rules.d
 }

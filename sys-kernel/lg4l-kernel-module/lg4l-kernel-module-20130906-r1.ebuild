@@ -1,13 +1,9 @@
-EAPI="2"
-inherit eutils git linux-mod
+EAPI=5
+inherit eutils git-2 linux-mod
 
 DESCRIPTION="Kernel module for Logitech G13, G15, G19 and G110 keyboards"
 HOMEPAGE="http://www.russo79.com/gnome15"
 
-# official repo
-#EGIT_REPO_URI="git://github.com/martynsmith/lg4l.git"
-
-# my fork
 EGIT_REPO_URI="git://github.com/CMoH/lg4l.git"
 EGIT_COMMIT="8493eddff69f7a84bcbb0c69c66eceab8474177e"
 

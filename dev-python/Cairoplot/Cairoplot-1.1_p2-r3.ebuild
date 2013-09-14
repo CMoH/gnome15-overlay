@@ -1,7 +1,9 @@
-EAPI="3"
+EAPI=5
+
+PYTHON_COMPAT=( python{2_6,2_7} )
 PYTHON_MODULE="cairoplot"
 
-inherit distutils
+inherit distutils-r1
 
 MY_PV="${PV/_p/-}"
 

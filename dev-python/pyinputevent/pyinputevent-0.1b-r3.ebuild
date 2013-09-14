@@ -1,11 +1,13 @@
-EAPI="3"
+EAPI=5
+
+PYTHON_COMPAT=( python{2_6,2_7} )
 PYTHON_DEPEND="2"
 
-inherit distutils
+inherit distutils-r1
 
 DESCRIPTION="Python interface to Linux's input subsystem"
-HOMEPAGE="http://www.russo79.com/gnome15"
-SRC_URI="https://projects.russo79.com/attachments/download/75/${P}.tar.gz"
+HOMEPAGE="http://www.gnome15.org/"
+SRC_URI="http://www.gnome15.org/downloads/Gnome15/Optional/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -15,7 +17,3 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}
 	>=dev-python/python-uinput-0.9"
-
-pkg_setup() {
-	python_set_active_version 2
-}

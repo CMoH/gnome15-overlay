@@ -1,7 +1,8 @@
-EAPI="3"
-SUPPORT_PYTHON_ABIS="1"
+EAPI=5
 
-inherit distutils
+PYTHON_COMPAT=( python{2_6,2_7} )
+
+inherit distutils-r1
 
 DESCRIPTION="Python API to the Linux uinput-system."
 HOMEPAGE="http://codegrove.org/projects/python-uinput/"
@@ -14,5 +15,3 @@ IUSE=""
 
 RDEPEND="dev-libs/libsuinput"
 DEPEND="${RDEPEND}"
-
-RESTRICT_PYTHON_ABIS="3.*"

@@ -1,6 +1,8 @@
 EAPI=5
 
-inherit eutils linux-info python
+PYTHON_COMPAT=( python{2_6,2_7} )
+
+inherit eutils linux-info python-r1
 
 DESCRIPTION="Gnome tools for the Logitech G Series Keyboards And Z-10 Speakers"
 HOMEPAGE="http://www.russo79.com/gnome15"
@@ -68,7 +70,6 @@ telepathy?   ( dev-python/telepathy-python )
 title?       ( dev-python/setproctitle )
 "
 DEPEND="${RDEPEND}"
-PYTHON_DEPEND="2:2.6"
 
 pkg_setup() {
 	ERROR_INPUT_UINPUT="INPUT_UINPUT is required for g15-desktop-service to work"
