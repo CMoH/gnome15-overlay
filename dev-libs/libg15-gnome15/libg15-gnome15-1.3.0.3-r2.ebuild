@@ -6,7 +6,7 @@ SRC_URI="https://projects.russo79.com/attachments/download/74/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="virtual/libusb"

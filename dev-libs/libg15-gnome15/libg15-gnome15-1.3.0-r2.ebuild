@@ -8,7 +8,7 @@ SRC_URI="http://www.gnome15.org/downloads/Gnome15/Optional/libg15-${PV}-with-gno
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="virtual/libusb"
