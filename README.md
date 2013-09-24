@@ -25,13 +25,13 @@ Next sync layman and add the gnome15 overlay
     layman -S
     layman -a gnome15
 
-Some of the packages needed by Gnome15 are marked as unstable at the moment, so you'll need to accept them if, like me, you have chosen a stable systems:
+For systems following the Gentoo stable branch you'll need to accept the gnome15 package and some of its depdendencies. For convenience, the overlay contains a list of needed packages:
 
     mkdir -p /etc/portage/package.keywords
     cd /etc/portage/package.keywords
-    ln -s /var/lib/layman/gnome15/Documentation/package.keywords/gnome15-deps .
+    ln -s /var/lib/layman/gnome15/Documentation/package.keywords/gnome15-stable .
 
-
+The packages are designed for arches amd64 and x86. If you find they work on other arches as well, please submit an issue.
 
 Using the ebuilds (>=gnome15-0.9.6)
 ========================================
@@ -55,7 +55,7 @@ Other use-flags used by the package are system use-flags, with the following not
 * weather - enables the weather and the weather-noaa plugins
 * weather + yahoo - enables the weather, weather-noaa and weather-yahoo plugins
 
-Note: at the current time I am unable to test if the installed gnome15-0.9.6 functions correctly, only its installation. As a consequence I have marked app-misc/gnome15 as unstable. Please report problems and I'll try to fix them.
+Note: gnome15-0.9.6 was moved to the unstable branch (~amd64 and ~x86), since portage requires that stable packages should not DEPEND/RDEPEND on unstable packages. Some of the dependencies needed by gnome15 are marked as unstable in the official Gentoo portage tree, thus propagating up to app-misc/gnome15.
 
 
 Using the ebuilds (<gnome15-0.9.6)
