@@ -2,7 +2,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_6,2_7} )
 
-inherit eutils linux-info python-r1
+inherit autotools eutils linux-info python-r1
 
 DESCRIPTION="Gnome tools for the Logitech G Series Keyboards And Z-10 Speakers"
 HOMEPAGE="http://www.russo79.com/gnome15"
@@ -75,9 +75,11 @@ pkg_setup() {
 	ERROR_INPUT_UINPUT="INPUT_UINPUT is required for g15-desktop-service to work"
 	CONFIG_CHECK="~INPUT_UINPUT"
 	check_extra_config
+}
 
-	python_set_active_version 2
-	python_pkg_setup
+src_prepare() {
+	epatch "${FILESDIR}/${P}-use_pillow.patch"
+	eautoconf
 }
 
 src_configure() {
