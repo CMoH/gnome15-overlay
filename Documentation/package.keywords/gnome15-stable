@@ -1,5 +1,7 @@
 app-misc/gnome15                ~amd64 ~x86
+dev-python/hgtools		~amd64 ~x86
 dev-python/keyring              ~amd64 ~x86
+dev-python/pytest-runner	~amd64 ~x86
 dev-python/python-virtkey       ~x86
 dev-python/pyusb                ~amx64 ~x86
 x11-misc/cairo-clock            ~x86
