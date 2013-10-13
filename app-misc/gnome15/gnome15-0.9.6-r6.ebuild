@@ -2,12 +2,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_6,2_7} )
 
-inherit autotools eutils linux-info python-any-r1
-
-### remove when #487890 is fixed by gentoo devs
-### https://bugs.gentoo.org/show_bug.cgi?id=487890
-unset _PYTHON_ANY_R1
-inherit python-single-r1
+inherit autotools eutils linux-info python-single-r1
 
 DESCRIPTION="Gnome tools for the Logitech G Series Keyboards And Z-10 Speakers"
 HOMEPAGE="http://www.russo79.com/gnome15"
@@ -86,7 +81,7 @@ pkg_setup() {
 	CONFIG_CHECK="~INPUT_UINPUT"
 	check_extra_config
 
-	python-any-r1_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
