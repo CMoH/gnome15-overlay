@@ -13,9 +13,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 IUSE="alsa ayatana debug cairo evo g15 g19 g930 gnome google gstreamer
-	  imap lg4l-module lm_sensors pop pulseaudio networkmanager nexuiz
+	  imap lg4l-module lm_sensors pop pulseaudio
 	  rss screensaver systray telepathy themes title voip weather
-	  webkit xrandr yahoo"
+	  xrandr yahoo"
+
+### in development:
+#networkmanager nexuiz webkit
 
 OBSOLETE_PACKAGES="\
 	!dev-libs/libg15-gnome15
@@ -61,7 +64,6 @@ google?      ( dev-python/gdata )
 gstreamer?   ( dev-python/gst-python )
 lg4l-module? ( sys-kernel/lg4l-kernel-module )
 lm_sensors?  ( dev-python/PySensors )
-nexuiz?      ( games-fps/nexuiz )
 pulseaudio?  ( sci-libs/fftw:3.0
 			   media-sound/pulseaudio )
 rss?         ( dev-python/feedparser )
@@ -70,6 +72,9 @@ telepathy?   ( dev-python/telepathy-python )
 title?       ( dev-python/setproctitle )
 "
 DEPEND="${RDEPEND}"
+
+### in development:
+#nexuiz?      ( games-fps/nexuiz )
 
 pkg_setup() {
 	ERROR_INPUT_UINPUT="INPUT_UINPUT is required for g15-desktop-service to work"
@@ -99,7 +104,6 @@ src_configure() {
 
 	PLUGINS="\
 		--enable-plugin-background \
-		--enable-plugin-backlight \
 		--enable-plugin-clock \
 		--enable-plugin-fx \
 		--enable-plugin-lcdshot \
@@ -115,7 +119,6 @@ src_configure() {
 		--enable-plugin-sysmon \
 		--enable-plugin-trafficstats \
 		--enable-plugin-tails \
-		--enable-plugin-things \
 		--enable-plugin-tweak \
 		$(use_enable alsa           plugin-volume) \
 		$(use_enable ayatana        plugin-indicator-messages) \
@@ -128,15 +131,19 @@ src_configure() {
 		$(use_enable gstreamer      plugin-mediaplayer) \
 		$(use_enable lm_sensors     plugin-sense) \
 		$(use_enable pulseaudio     plugin-impulse15) \
-		$(use_enable networkmanager plugin-nm) \
 		$(use_enable rss            plugin-rss) \
 		$(use_enable screensaver    plugin-screensaver) \
 		$(use_enable telepathy      plugin-im) \
 		$(use_enable voip           plugin-voip) \
 		$(use_enable weather        plugin-weather) \
-		$(use_enable webkit         plugin-webkit-browser) \
 		$(use_enable xrandr         plugin-display) \
 	"
+
+### in development
+		# --enable-plugin-backlight \
+		# --enable-plugin-things \
+		# $(use_enable networkmanager plugin-nm) \
+		# $(use_enable webkit         plugin-webkit-browser) \
 
 	# calendar plugins
 	if use evo || use google ; then
