@@ -59,7 +59,8 @@ gnome?       ( gnome-base/libgnomeui
 			   dev-python/gnome-desktop-python
 			   dev-python/gnome-keyring-python
 			   dev-python/pygobject )
-g15?         ( !app-misc/g15daemon )
+g15?         ( !app-misc/g15daemon
+			   dev-libs/libg15-gnome15 )
 google?      ( dev-python/gdata )
 gstreamer?   ( dev-python/gst-python )
 lg4l-module? ( sys-kernel/lg4l-kernel-module )
