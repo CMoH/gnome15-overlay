@@ -26,7 +26,6 @@ IUSE="alsa ayatana debug cairo evo g15 g19 g930 gnome google gstreamer
 #networkmanager nexuiz webkit
 
 OBSOLETE_PACKAGES="\
-	!dev-libs/libg15-gnome15
 	!dev-python/pylibg19
 	!app-misc/gnome15-core
 	!app-misc/gnome15-iconpack
@@ -207,5 +206,5 @@ src_configure() {
 
 src_compile() {
 	emake
-	python_fix_shebang ${S}/src/scripts
+	python_fix_shebang "${S}/src/scripts"
 }
