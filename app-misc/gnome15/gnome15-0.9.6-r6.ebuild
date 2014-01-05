@@ -99,7 +99,7 @@ src_configure() {
 
 	DRIVERS="\
 		$(use_enable lg4l-module driver-kernel) \
-		$(use_enable g15         driver-g15) \
+		$(use_enable g15         driver-g15direct) \
 		$(use_enable g19         driver-g19direct) \
 		$(use_enable g930        driver-g930) \
 	"
