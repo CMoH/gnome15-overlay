@@ -1,7 +1,7 @@
 Gentoo overlay for Gnome15
 ==========================
 
-I am a Gentoo user with a Logitech G19 keyboard, and I have created a personal overlay containing ebuilds for the Gnome15 packages. After a while I thought others might benefit from the same set of ebuilds, so here they are.
+I am a Gentoo user with a Logitech G13 keyboard, and I have created a personal overlay containing ebuilds for the Gnome15 packages. After a while I thought others might benefit from the same set of ebuilds, so here they are.
 
 Since I am only using a limited set of features, I expect others will get into some problems. Please report such problems in the Issues section of the Github project. Contributions are also welcome.
 
@@ -18,7 +18,7 @@ After having layman installed edit its configuration in /etc/layman/layman.cfg t
 
 
     overlays  : http://www.gentoo.org/proj/en/overlays/repositories.xml
-                https://github.com/CMoH/gnome15-overlay/raw/master/overlay.xml
+                https://github.com/niko20010/gnome15-overlay/raw/master/overlay.xml
 
 Next sync layman and add the gnome15 overlay
 
