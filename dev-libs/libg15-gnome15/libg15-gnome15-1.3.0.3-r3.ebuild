@@ -1,4 +1,4 @@
-EAPI="3"
+EAPI="5"
 
 DESCRIPTION="Library to handle the LCD and extra keys on the Logitech G15 Gaming Keyboard and similar devices."
 HOMEPAGE="http://www.russo79.com/gnome15"
