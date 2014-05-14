@@ -48,6 +48,7 @@ The following use-flags affect the installed drivers:
 Other use-flags used by the package are system use-flags, with the following notes:
 
 * evo - enables the evolution calendar plugin
+* fonts - better fonts on monochrome displays
 * google - enables the google calendar plugin
 * google + cairo - enables the google-analytics plugin
 * nexuiz - adds the nexuiz plugins and pulls in games-fps/nexuiz

@@ -2,7 +2,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_6,2_7} )
 
-inherit autotools eutils linux-info python-single-r1
+inherit eutils linux-info python-single-r1
 
 DESCRIPTION="Gnome tools for the Logitech G Series Keyboards And Z-10 Speakers"
 HOMEPAGE="http://www.russo79.com/gnome15"
@@ -12,7 +12,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="alsa ayatana debug cairo evo g15 g19 g930 gnome google gstreamer
+IUSE="alsa ayatana debug cairo evo fonts g15 g19 g930 gnome google gstreamer
 	  imap lg4l-module lm_sensors pop pulseaudio
 	  rss screensaver systray telepathy themes title voip weather
 	  xrandr yahoo"
@@ -58,6 +58,7 @@ gnome?       ( gnome-base/libgnomeui
 			   dev-python/gnome-desktop-python
 			   dev-python/gnome-keyring-python
 			   dev-python/pygobject )
+fonts?		 ( media-fonts/font-misc-misc )
 g15?         ( !app-misc/g15daemon
 			   dev-libs/libg15-gnome15 )
 google?      ( dev-python/gdata )
@@ -83,11 +84,6 @@ pkg_setup() {
 
 	python-single-r1_pkg_setup
 }
-
-# src_prepare() {
-# 	epatch "${FILESDIR}/${P}-use_pillow.patch"
-# 	eautoconf
-# }
 
 src_configure() {
 	local DRIVERS

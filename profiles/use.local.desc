@@ -1,3 +1,4 @@
+app-misc/gnome15:fonts - install better fonts for monochrome LCDs
 app-misc/gnome15:g15 - install G15 userspace driver and plugins (similar to g15daemon)
 app-misc/gnome15:g19 - install G19 userspace driver (g19direct)
 app-misc/gnome15:g930 - install G930 userspace driver
