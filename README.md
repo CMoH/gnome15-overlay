@@ -33,8 +33,9 @@ For systems following the Gentoo stable branch you'll need to accept the gnome15
 
 The packages are designed for arches amd64 and x86. If you find they work on other arches as well, please submit an issue.
 
+
 Using the ebuilds (>=gnome15-0.9.6)
-========================================
+===================================
 
 The ebuild you are interested in is app-misc/gnome15. Upgrades from <gnome15-0.9.6 should work seamlessly, and portage should properly replace virtual/gnome15 with app-misc/gnome15. If not, please report the problems.
 
@@ -44,6 +45,8 @@ The following use-flags affect the installed drivers:
 * g19 - installs the userspace g19 drivers
 * g930 - installs the userpace g930 drivers
 * lg4l-module - installs the kernel driver (g110, g15, g19 and g510)
+
+When using the kernel module, udev should assign the input devices to the plugdev group, and the framebuffers to the video group. Without the kernel module only the input devices will be visible in /dev, within the plugdev group.
 
 Other use-flags used by the package are system use-flags, with the following notes:
 
@@ -59,8 +62,9 @@ Other use-flags used by the package are system use-flags, with the following not
 Note: gnome15-0.9.6 was moved to the unstable branch (~amd64 and ~x86), since portage requires that stable packages should not DEPEND/RDEPEND on unstable packages. Some of the dependencies needed by gnome15 are marked as unstable in the official Gentoo portage tree, thus propagating up to app-misc/gnome15.
 
 
+
 Using the ebuilds (<gnome15-0.9.6)
-========================================
+==================================
 
 Before gnome15-0.9.6, the application was split into multiple packages. Those ebuilds will be present on the gnome15-0.9.5 branch, and they will be removed from the master branch shortly.
 
@@ -78,7 +82,6 @@ Here are the use-flags and their relevance for virtual/gnome15:
 * themes - installs gnome15-iconpack
 
 Notes: the ayatana use flag is masked by gentoo. Also, there are no packages for the indicator framework, so currently this flag is not properly implemented in my ebuilds either.
-
 
 
 Notes on the kernel module

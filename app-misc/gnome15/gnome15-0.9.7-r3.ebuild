@@ -1,8 +1,8 @@
-EAPI=5
+EAPI="5"
 
 PYTHON_COMPAT=( python{2_6,2_7} )
 
-inherit eutils linux-info python-single-r1
+inherit autotools eutils linux-info python-single-r1
 
 DESCRIPTION="Gnome tools for the Logitech G Series Keyboards And Z-10 Speakers"
 HOMEPAGE="http://www.russo79.com/gnome15"
@@ -83,6 +83,11 @@ pkg_setup() {
 	check_extra_config
 
 	python-single-r1_pkg_setup
+}
+
+src_prepare() {
+	epatch "${FILESDIR}/${P}-gentoo-video-group.patch"
+	eautoreconf
 }
 
 src_configure() {

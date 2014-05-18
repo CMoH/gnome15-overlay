@@ -1,0 +1,98 @@
+From 210f3fa6e609ab7d9396fe5c2488d045a1b91fc3 Mon Sep 17 00:00:00 2001
+From: Ciprian Ciubotariu <cheepeero@gmx.net>
+Date: Sun, 18 May 2014 03:27:37 +0300
+Subject: [PATCH] Use video group for framebuffer devices
+
+Gentoo places framebuffer devices in the video group. Pluggable input
+devices are placed in the plugdev group.
+---
+ configure.ac                         | 12 +++++++++++-
+ data/udev/99-gnome15-kernel.rules.in | 16 ++++++++--------
+ 2 files changed, 19 insertions(+), 9 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 496092a..8ffe9ac 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -187,13 +187,21 @@ dnl udev file path and settings
+ AC_ARG_VAR(UDEV_RULES_PATH, [Path for udev rules. Defaults to /lib/udev/rules.d])
+ AS_IF([test -z "${UDEV_RULES_PATH}"],
+ 	AC_SUBST([UDEV_RULES_PATH], [/lib/udev/rules.d]))
+-AC_ARG_VAR(DEVICEGROUP, [Group that the devices will be owned by. Defaults to plugdev])
++
++AC_ARG_VAR(DEVICEGROUP, [Group that the input devices will be owned by. Defaults to plugdev])
+ AS_IF([test -z "${DEVICEGROUP}"],
+ 	AC_SUBST([DEVICEGROUP], [plugdev]))
+ AC_ARG_VAR(DEVICEMODE, [Permissions of the devices. Defaults to 0660])
+ AS_IF([test -z "${DEVICEMODE}"],
+ 	AC_SUBST([DEVICEMODE], [0660]))
+ 
++AC_ARG_VAR(VIDEOGROUP, [Group that the framebuffer devices will be owned by. Defaults to video])
++AS_IF([test -z "${VIDEOGROUP}"],
++	AC_SUBST([VIDEOGROUP], [video]))
++AC_ARG_VAR(VIDEOMODE, [Permissions of the framebuffer devices. Defaults to 0660])
++AS_IF([test -z "${VIDEOMODE}"],
++	AC_SUBST([VIDEOMODE], [0660]))
++
+ dnl Drivers
+ AC_ARG_ENABLE([driver-kernel],
+ 	[AS_HELP_STRING([--enable-driver-kernel],
+@@ -1379,6 +1387,8 @@ AS_ECHO("Fixed size font name        - ${FIXED_SIZE_FONT}")
+ AS_ECHO("udev rules path             - ${UDEV_RULES_PATH}")
+ AS_ECHO("Device group                - ${DEVICEGROUP}")
+ AS_ECHO("Device mode                 - ${DEVICEMODE}")
++AS_ECHO("Video group                 - ${VIDEOGROUP}")
++AS_ECHO("Video mode                  - ${VIDEOMODE}")
+ AS_ECHO_N("Hotplugging support         - ")
+ AS_IF([test "x${HAVE_PYUDEV}" = "xno"],
+      [AS_ECHO("No")],
+diff --git a/data/udev/99-gnome15-kernel.rules.in b/data/udev/99-gnome15-kernel.rules.in
+index 3a70cd7..cad27fb 100644
+--- a/data/udev/99-gnome15-kernel.rules.in
++++ b/data/udev/99-gnome15-kernel.rules.in
+@@ -4,29 +4,29 @@
+  
+ # Logitech G19 Gaming Keyboard
+ SUBSYSTEM=="input", ACTION=="add", KERNEL=="event*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c229", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g19-extra-keys"
+-SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c229", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g19-lcd"
++SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c229", MODE="@VIDEOMODE@", GROUP="@VIDEOGROUP@", SYMLINK+="g19-lcd"
+ 
+ # Logitech G15 Gaming Keyboard (version 1)
+ SUBSYSTEM=="input", ACTION=="add", KERNEL=="event*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c222", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g15v1-extra-keys"
+-SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c222", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g15v1-lcd"
++SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c222", MODE="@VIDEOMODE@", GROUP="@VIDEOGROUP@", SYMLINK+="g15v1-lcd"
+ 
+ # Logitech G15 Gaming Keyboard (version 2)
+ SUBSYSTEM=="input", ACTION=="add", KERNEL=="event*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c227", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g15v2-extra-keys"
+-SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c227", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g15v2-lcd"
++SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c227", MODE="@VIDEOMODE@", GROUP="@VIDEOGROUP@", SYMLINK+="g15v2-lcd"
+ 
+ # Logitech G13 Advanced Gameboard
+ SUBSYSTEM=="input", ACTION=="add", KERNEL=="event*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c21c", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g13-extra-keys"
+-SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c21c", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g13-lcd"
++SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c21c", MODE="@VIDEOMODE@", GROUP="@VIDEOGROUP@", SYMLINK+="g13-lcd"
+ 
+ # Logitech G510 Keyboard
+ SUBSYSTEM=="input", ACTION=="add", KERNEL=="event*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c22d", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g510-extra-keys"
+-SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c22d", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g510-lcd"
++SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c22d", MODE="@VIDEOMODE@", GROUP="@VIDEOGROUP@", SYMLINK+="g510-lcd"
+ SUBSYSTEM=="input", ACTION=="add", KERNEL=="event*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c22e", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g510-extra-keys"
+-SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c22e", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g510-lcd"
++SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c22e", MODE="@VIDEOMODE@", GROUP="@VIDEOGROUP@", SYMLINK+="g510-lcd"
+ 
+ # Logitech Z10 Speakers 
+ SUBSYSTEM=="input", ACTION=="add", KERNEL=="event*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="0a07", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="z10-extra-keys"
+-SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="0a07", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="z10-lcd"
++SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="0a07", MODE="@VIDEOMODE@", GROUP="@VIDEOGROUP@", SYMLINK+="z10-lcd"
+ 
+ # Logitech G11 Keyboard (no LCD)
+ SUBSYSTEM=="input", ACTION=="add", KERNEL=="event*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c225", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="g11-extra-keys"
+@@ -36,4 +36,4 @@ SUBSYSTEM=="input", ACTION=="add", KERNEL=="event*", ATTRS{idVendor}=="046d", AT
+ 
+ # Logitech Game Panel (Dell XPS 1730?)
+ SUBSYSTEM=="input", ACTION=="add", KERNEL=="event*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c251", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="gamepanel-extra-keys"
+-SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c251", MODE="@DEVICEMODE@", GROUP="@DEVICEGROUP@", SYMLINK+="gamepanel-lcd"
++SUBSYSTEMS=="usb", ACTION=="add", KERNEL=="fb[0-9]*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c251", MODE="@VIDEOMODE@", GROUP="@VIDEOGROUP@", SYMLINK+="gamepanel-lcd"
+-- 
+1.8.5.5
+
