@@ -1,0 +1,9 @@
+diff --git a/data/applications/g15-config.desktop.in b/data/applications/g15-config.desktop.in
+index ffed8c6..62516b1 100644
+--- a/data/applications/g15-config.desktop.in
++++ b/data/applications/g15-config.desktop.in
+@@ -8,4 +8,3 @@ Terminal=false
+ StartupNotify=true
+ Type=Application
+ Categories=GTK;Settings;HardwareSettings;
+-OnlyShowIn=GNOME;
