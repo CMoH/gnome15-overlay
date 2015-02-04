@@ -5,8 +5,8 @@ PYTHON_COMPAT=( python{2_6,2_7} )
 inherit autotools eutils linux-info python-single-r1
 
 DESCRIPTION="Gnome tools for the Logitech G Series Keyboards And Z-10 Speakers"
-HOMEPAGE="http://www.russo79.com/gnome15"
-SRC_URI="https://projects.russo79.com/attachments/download/140/${P}.tar.gz"
+HOMEPAGE="http://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="http://www.cheepee.ro/~cipi/portage/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

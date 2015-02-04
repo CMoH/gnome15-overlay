@@ -6,8 +6,8 @@ PYTHON_MODULE="sensors"
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for libsensors.so from the lm-sensors project"
-HOMEPAGE="http://www.russo79.com/gnome15"
-SRC_URI="https://projects.russo79.com/attachments/download/34/${P}.tar.gz"
+HOMEPAGE="http://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="http://www.cheepee.ro/~cipi/portage/distfiles/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

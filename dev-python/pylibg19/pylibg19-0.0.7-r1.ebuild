@@ -6,8 +6,8 @@ PYTHON_MODNAME="g19"
 inherit distutils-r1
 
 DESCRIPTION="Python interface to Linux's input subsystem"
-HOMEPAGE="http://www.russo79.com/gnome15"
-SRC_URI="https://projects.russo79.com/attachments/download/126/${P}.tar.gz"
+HOMEPAGE="http://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="http://www.cheepee.ro/~cipi/portage/distfiles/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
