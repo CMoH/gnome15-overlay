@@ -12,10 +12,13 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="alsa ayatana debug cairo evo fonts g15 g19 g930 gnome google gstreamer
+IUSE="alsa ayatana debug cairo g15 g19 g930 gnome google gstreamer
 	  imap lg4l-module lm_sensors pop pulseaudio
 	  rss screensaver systray telepathy themes title voip weather
 	  xrandr yahoo"
+
+### dropped support because portage tree lacks necessary packages
+#evo - depends on evolution-2.x, which is no longer maintained
 
 ### in development:
 #networkmanager nexuiz webkit
@@ -51,14 +54,11 @@ alsa?        ( dev-python/pyalsa
 cairo?       ( x11-misc/cairo-clock
 			   dev-python/pycairo
 			   dev-python/cairoplot-gnome15 )
-evo?         ( dev-python/evolution-python
-			   dev-python/vobject )
 gnome?       ( gnome-base/libgnomeui
 			   dev-python/gnome-applets-python
 			   dev-python/gnome-desktop-python
 			   dev-python/gnome-keyring-python
 			   dev-python/pygobject )
-fonts?		 ( media-fonts/font-misc-misc )
 g15?         ( !app-misc/g15daemon
 			   dev-libs/libg15-gnome15 )
 google?      ( dev-python/gdata )
@@ -74,6 +74,10 @@ title?       ( dev-python/setproctitle )
 "
 DEPEND="${RDEPEND}"
 
+### dropped
+# evo?         ( dev-python/evolution-python
+# 			   dev-python/vobject )
+
 ### in development:
 #nexuiz?      ( games-fps/nexuiz )
 
@@ -86,8 +90,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-gentoo-video-group.patch"
-	eautoreconf
+	epatch "${FILESDIR}/${P}-use_pillow.patch"
+	eautoconf
 }
 
 src_configure() {
@@ -127,7 +131,6 @@ src_configure() {
 		$(use_enable ayatana        plugin-indicator-messages) \
 		$(use_enable debug          plugin-debug) \
 		$(use_enable cairo          plugin-cairo-clock) \
-		$(use_enable evo            plugin-cal-evolution) \
 		$(use_enable gstreamer      plugin-mediaplayer) \
 		$(use_enable g15            plugin-g15daemon-server) \
 		$(use_enable google         plugin-cal-google) \
@@ -142,6 +145,9 @@ src_configure() {
 		$(use_enable xrandr         plugin-display) \
 	"
 
+### dropped
+		# $(use_enable evo            plugin-cal-evolution) \
+
 ### in development
 		# --enable-plugin-backlight \
 		# --enable-plugin-things \
@@ -149,7 +155,8 @@ src_configure() {
 		# $(use_enable webkit         plugin-webkit-browser) \
 
 	# calendar plugins
-	if use evo || use google ; then
+	# if use evo || use google ; then
+	if use google ; then
 		PLUGINS="${PLUGINS} --enable-plugin-cal"
 	fi
 
