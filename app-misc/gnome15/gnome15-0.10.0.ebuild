@@ -12,7 +12,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="alsa ayatana debug cairo g15 g19 g930 gnome google gstreamer
+IUSE="alsa ayatana debug cairo fonts g15 g19 g930 gnome google gstreamer
 	  imap lg4l-module lm_sensors pop pulseaudio
 	  rss screensaver systray telepathy themes title voip weather
 	  xrandr yahoo"
@@ -59,11 +59,12 @@ gnome?       ( gnome-base/libgnomeui
 			   dev-python/gnome-desktop-python
 			   dev-python/gnome-keyring-python
 			   dev-python/pygobject )
+fonts?		 ( media-fonts/font-misc-misc )
 g15?         ( !app-misc/g15daemon
 			   dev-libs/libg15-gnome15 )
 google?      ( dev-python/gdata )
 gstreamer?   ( dev-python/gst-python:0.10 )
-lg4l-module? ( sys-kernel/lg4l-kernel-module )
+lg4l-module? ( >=sys-kernel/lg4l-kernel-module-20150216 )
 lm_sensors?  ( dev-python/PySensors )
 pulseaudio?  ( sci-libs/fftw:3.0
 			   media-sound/pulseaudio )
@@ -74,7 +75,7 @@ title?       ( dev-python/setproctitle )
 "
 DEPEND="${RDEPEND}"
 
-### dropped
+### dropped:
 # evo?         ( dev-python/evolution-python
 # 			   dev-python/vobject )
 
@@ -90,8 +91,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-use_pillow.patch"
-	eautoconf
+	epatch "${FILESDIR}/${PN}-0.9.7-gentoo-video-group.patch"
+	eautoreconf
 }
 
 src_configure() {
