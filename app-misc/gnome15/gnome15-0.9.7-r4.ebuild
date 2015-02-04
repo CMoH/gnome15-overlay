@@ -63,7 +63,7 @@ fonts?		 ( media-fonts/font-misc-misc )
 g15?         ( !app-misc/g15daemon
 			   dev-libs/libg15-gnome15 )
 google?      ( dev-python/gdata )
-gstreamer?   ( dev-python/gst-python )
+gstreamer?   ( dev-python/gst-python:0.10 )
 lg4l-module? ( sys-kernel/lg4l-kernel-module )
 lm_sensors?  ( dev-python/PySensors )
 pulseaudio?  ( sci-libs/fftw:3.0
