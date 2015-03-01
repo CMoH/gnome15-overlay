@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-python/libgtop-python/Attic/libgtop-python-2.32.0.ebuild,v 1.9 2014/11/13 11:07:44 pacho dead $
 
-EAPI="3"
-GCONF_DEBUG="no"
-G_PY_PN="gnome-python-desktop"
-G_PY_BINDINGS="gtop"
-SUPPORT_PYTHON_ABIS="1"
-PYTHON_DEPEND="2"
-RESTRICT_PYTHON_ABIS="3.*"
+EAPI=5
 
-inherit gnome-python-common
+GCONF_DEBUG="no"
+GNOME_ORG_MODULE="gnome-python-desktop"
+G_PY_BINDINGS="gtop"
+
+PYTHON_COMPAT=( python{2_6,2_7} )
+
+inherit gnome-python-common-r1
 
 DESCRIPTION="Python bindings for the libgtop library"
 LICENSE="GPL-2"
