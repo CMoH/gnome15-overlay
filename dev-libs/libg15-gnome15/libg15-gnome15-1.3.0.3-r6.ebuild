@@ -9,5 +9,6 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="virtual/libusb:0"
-DEPEND="${RDEPEND}"
+RDEPEND="virtual/libusb:0
+	!dev-libs/libg15"
+DEPEND="virtual/libusb:0"
