@@ -8,7 +8,7 @@ EGIT_REPO_URI="git://github.com/CMoH/lg4l.git"
 EGIT_COMMIT="3b92a1b641824e649d1847aa650a0808574db0b0"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # for some reason the build fails with parallel builds
